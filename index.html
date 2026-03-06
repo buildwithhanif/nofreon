@@ -447,15 +447,6 @@
         Punya rekomendasi tukang AC trusted?<br>
         DM ke <a href="https://x.com/hanifproduktif" target="_blank">@hanifproduktif</a>
     </p>
-    <nav aria-label="Lihat per kota" style="margin: 16px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
-        <a href="/jabodetabek/" style="padding: 5px 12px; border: 1px solid #E8E4DE; border-radius: 100px; font-size: 12px; color: #1A1A1A; text-decoration: none; font-weight: 500;">Jabodetabek</a>
-        <a href="/bandung/" style="padding: 5px 12px; border: 1px solid #E8E4DE; border-radius: 100px; font-size: 12px; color: #1A1A1A; text-decoration: none; font-weight: 500;">Bandung</a>
-        <a href="/semarang/" style="padding: 5px 12px; border: 1px solid #E8E4DE; border-radius: 100px; font-size: 12px; color: #1A1A1A; text-decoration: none; font-weight: 500;">Semarang</a>
-        <a href="/jogja/" style="padding: 5px 12px; border: 1px solid #E8E4DE; border-radius: 100px; font-size: 12px; color: #1A1A1A; text-decoration: none; font-weight: 500;">Jogja</a>
-        <a href="/solo/" style="padding: 5px 12px; border: 1px solid #E8E4DE; border-radius: 100px; font-size: 12px; color: #1A1A1A; text-decoration: none; font-weight: 500;">Solo</a>
-        <a href="/surabaya/" style="padding: 5px 12px; border: 1px solid #E8E4DE; border-radius: 100px; font-size: 12px; color: #1A1A1A; text-decoration: none; font-weight: 500;">Surabaya</a>
-        <a href="/bali/" style="padding: 5px 12px; border: 1px solid #E8E4DE; border-radius: 100px; font-size: 12px; color: #1A1A1A; text-decoration: none; font-weight: 500;">Bali</a>
-    </nav>
     <div class="stats" id="statsLine"></div>
 </div>
 
@@ -464,14 +455,19 @@
 // DATA — Edit this array to add/remove listings
 // =====================================================
 const DATA = [
-    // JABODETABEK
-    { name: "Kulmi Indonesia", phone: "0821-2392-6199", area: "Tangerang Selatan & Jakarta Barat", city: "Jabodetabek" },
-    { name: "King Service AC", phone: "0857-1871-8450", area: "Ketapang Utara, Jakarta Barat", city: "Jabodetabek" },
-    { name: "Karya Tehnik", phone: "0857-1829-8050", area: "Sunter Jaya, Jakarta Utara", city: "Jabodetabek" },
-    { name: "Bathara Technic", phone: "0812-8476-8780", area: "Cilandak, Jakarta Selatan", city: "Jabodetabek" },
-    { name: "Mekar Jaya Service", phone: "0821-1234-5678", area: "Jakarta Timur", city: "Jabodetabek" },
-    { name: "Pak Zaenu", phone: "0895-0941-5756", area: "Lenteng Agung, Jakarta Selatan", city: "Jabodetabek" },
-    { name: "Tukang AC Pak Nana Suryana", phone: "0812-8802-0571", area: "Kota Bekasi", city: "Jabodetabek" },
+    // JAKARTA
+    { name: "Kulmi Indonesia", phone: "0821-2392-6199", area: "Jakarta Barat", city: "Jakarta" },
+    { name: "King Service AC", phone: "0857-1871-8450", area: "Ketapang Utara, Jakarta Barat", city: "Jakarta" },
+    { name: "Karya Tehnik", phone: "0857-1829-8050", area: "Sunter Jaya, Jakarta Utara", city: "Jakarta" },
+    { name: "Bathara Technic", phone: "0812-8476-8780", area: "Cilandak, Jakarta Selatan", city: "Jakarta" },
+    { name: "Mekar Jaya Service", phone: "0821-1234-5678", area: "Jakarta Timur", city: "Jakarta" },
+    { name: "Pak Zaenu", phone: "0895-0941-5756", area: "Lenteng Agung, Jakarta Selatan", city: "Jakarta" },
+
+    // TANGERANG
+    { name: "Kulmi Indonesia", phone: "0821-2392-6199", area: "Tangerang Selatan", city: "Tangerang" },
+
+    // BEKASI
+    { name: "Tukang AC Pak Nana Suryana", phone: "0812-8802-0571", area: "Kota Bekasi", city: "Bekasi" },
 
     // BANDUNG
     { name: "Klinik AC Bandung", phone: "0857-2111-2000", area: "Cigadung, Cibeunying Kaler", city: "Bandung" },
@@ -524,7 +520,7 @@ const DATA = [
 // =====================================================
 // APP LOGIC
 // =====================================================
-const CITY_ORDER = ["Jabodetabek", "Bandung", "Semarang", "Jogja", "Solo", "Surabaya", "Bali"];
+const CITY_ORDER = ["Jakarta", "Tangerang", "Bekasi", "Bandung", "Semarang", "Jogja", "Solo", "Surabaya", "Bali"];
 let activeCity = "all";
 
 function getCityCounts() {

@@ -1,12 +1,15 @@
 {
   "listings": [
-    { "name": "Kulmi Indonesia", "phone": "0821-2392-6199", "area": "Tangerang Selatan & Jakarta Barat", "city": "Jabodetabek" },
-    { "name": "King Service AC", "phone": "0857-1871-8450", "area": "Ketapang Utara, Jakarta Barat", "city": "Jabodetabek" },
-    { "name": "Karya Tehnik", "phone": "0857-1829-8050", "area": "Sunter Jaya, Jakarta Utara", "city": "Jabodetabek" },
-    { "name": "Bathara Technic", "phone": "0812-8476-8780", "area": "Cilandak, Jakarta Selatan", "city": "Jabodetabek" },
-    { "name": "Mekar Jaya Service", "phone": "0821-1234-5678", "area": "Jakarta Timur", "city": "Jabodetabek" },
-    { "name": "Pak Zaenu", "phone": "0895-0941-5756", "area": "Lenteng Agung, Jakarta Selatan", "city": "Jabodetabek" },
-    { "name": "Tukang AC Pak Nana Suryana", "phone": "0812-8802-0571", "area": "Kota Bekasi", "city": "Jabodetabek" },
+    { "name": "Kulmi Indonesia", "phone": "0821-2392-6199", "area": "Jakarta Barat", "city": "Jakarta" },
+    { "name": "King Service AC", "phone": "0857-1871-8450", "area": "Ketapang Utara, Jakarta Barat", "city": "Jakarta" },
+    { "name": "Karya Tehnik", "phone": "0857-1829-8050", "area": "Sunter Jaya, Jakarta Utara", "city": "Jakarta" },
+    { "name": "Bathara Technic", "phone": "0812-8476-8780", "area": "Cilandak, Jakarta Selatan", "city": "Jakarta" },
+    { "name": "Mekar Jaya Service", "phone": "0821-1234-5678", "area": "Jakarta Timur", "city": "Jakarta" },
+    { "name": "Pak Zaenu", "phone": "0895-0941-5756", "area": "Lenteng Agung, Jakarta Selatan", "city": "Jakarta" },
+
+    { "name": "Kulmi Indonesia", "phone": "0821-2392-6199", "area": "Tangerang Selatan", "city": "Tangerang" },
+
+    { "name": "Tukang AC Pak Nana Suryana", "phone": "0812-8802-0571", "area": "Kota Bekasi", "city": "Bekasi" },
 
     { "name": "Klinik AC Bandung", "phone": "0857-2111-2000", "area": "Cigadung, Cibeunying Kaler", "city": "Bandung" },
     { "name": "Ke-Rumah.com", "phone": "0889-1012-696", "area": "Buah Batu, Lengkong", "city": "Bandung" },
@@ -49,5 +52,5 @@
     { "name": "Wayan Putra Teknik", "phone": "0819-1641-3774", "area": "Denpasar, Bali", "city": "Bali" },
     { "name": "Mitra Engineering", "phone": "0857-3974-6931", "area": "Kota Denpasar", "city": "Bali" }
   ],
-  "cityOrder": ["Jabodetabek", "Bandung", "Semarang", "Jogja", "Solo", "Surabaya", "Bali"]
+  "cityOrder": ["Jakarta", "Tangerang", "Bekasi", "Bandung", "Semarang", "Jogja", "Solo", "Surabaya", "Bali"]
 }

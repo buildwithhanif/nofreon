@@ -7,67 +7,79 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/jabodetabek/</loc>
+    <loc>https://nofreon.id/jakarta/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/jabodetabek/cilandak/</loc>
+    <loc>https://nofreon.id/jakarta/cilandak/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/jabodetabek/jakarta-barat/</loc>
+    <loc>https://nofreon.id/jakarta/jakarta-barat/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/jabodetabek/jakarta-selatan/</loc>
+    <loc>https://nofreon.id/jakarta/jakarta-selatan/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/jabodetabek/jakarta-timur/</loc>
+    <loc>https://nofreon.id/jakarta/jakarta-timur/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/jabodetabek/jakarta-utara/</loc>
+    <loc>https://nofreon.id/jakarta/jakarta-utara/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/jabodetabek/ketapang-utara/</loc>
+    <loc>https://nofreon.id/jakarta/ketapang-utara/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/jabodetabek/kota-bekasi/</loc>
+    <loc>https://nofreon.id/jakarta/lenteng-agung/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/jabodetabek/lenteng-agung/</loc>
+    <loc>https://nofreon.id/jakarta/sunter-jaya/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/jabodetabek/sunter-jaya/</loc>
+    <loc>https://nofreon.id/tangerang/</loc>
+    <lastmod>2026-03-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nofreon.id/tangerang/tangerang-selatan/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/jabodetabek/tangerang-selatan/</loc>
+    <loc>https://nofreon.id/bekasi/</loc>
+    <lastmod>2026-03-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nofreon.id/bekasi/kota-bekasi/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
