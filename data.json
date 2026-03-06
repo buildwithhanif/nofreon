@@ -1,0 +1,53 @@
+{
+  "listings": [
+    { "name": "Kulmi Indonesia", "phone": "0821-2392-6199", "area": "Tangerang Selatan & Jakarta Barat", "city": "Jabodetabek" },
+    { "name": "King Service AC", "phone": "0857-1871-8450", "area": "Ketapang Utara, Jakarta Barat", "city": "Jabodetabek" },
+    { "name": "Karya Tehnik", "phone": "0857-1829-8050", "area": "Sunter Jaya, Jakarta Utara", "city": "Jabodetabek" },
+    { "name": "Bathara Technic", "phone": "0812-8476-8780", "area": "Cilandak, Jakarta Selatan", "city": "Jabodetabek" },
+    { "name": "Mekar Jaya Service", "phone": "0821-1234-5678", "area": "Jakarta Timur", "city": "Jabodetabek" },
+    { "name": "Pak Zaenu", "phone": "0895-0941-5756", "area": "Lenteng Agung, Jakarta Selatan", "city": "Jabodetabek" },
+    { "name": "Tukang AC Pak Nana Suryana", "phone": "0812-8802-0571", "area": "Kota Bekasi", "city": "Jabodetabek" },
+
+    { "name": "Klinik AC Bandung", "phone": "0857-2111-2000", "area": "Cigadung, Cibeunying Kaler", "city": "Bandung" },
+    { "name": "Ke-Rumah.com", "phone": "0889-1012-696", "area": "Buah Batu, Lengkong", "city": "Bandung" },
+    { "name": "AC Quickly", "phone": "0821-1891-3292", "area": "Kiaracondong", "city": "Bandung" },
+    { "name": "Service AC Bandung Pratama", "phone": "0817-7928-1515", "area": "Buah Batu, Bandung Kidul", "city": "Bandung" },
+    { "name": "Dudin Rahman", "phone": "0812-1420-0552", "area": "Bandung Area", "city": "Bandung" },
+    { "name": "Kang Yuda", "phone": "0838-3134-1592", "area": "Kota Bandung, Cimahi, Bandung Barat", "city": "Bandung" },
+
+    { "name": "Amanah Teknik", "phone": "0877-3114-2488", "area": "Sambiroto, Semarang Barat", "city": "Semarang" },
+    { "name": "Hai Service", "phone": "0851-7971-5190", "area": "Seluruh Kota Semarang", "city": "Semarang" },
+    { "name": "Duta Teknik", "phone": "0852-2647-4707", "area": "Borobudur Raya, Semarang Barat", "city": "Semarang" },
+    { "name": "Karya Jaya Teknik", "phone": "0815-7549-5909", "area": "Gajahmungkur, Semarang", "city": "Semarang" },
+    { "name": "Black Box AC Semarang", "phone": "0859-5909-8899", "area": "Semarang", "city": "Semarang" },
+    { "name": "Gayeng Teknik AC", "phone": "0896-0426-7954", "area": "Semarang", "city": "Semarang" },
+
+    { "name": "Ademin", "phone": "0817-4917-567", "area": "Kota Yogyakarta & sekitarnya", "city": "Jogja" },
+    { "name": "Karya Gemilang Teknik", "phone": "0857-4313-3314", "area": "Condongcatur, Sleman", "city": "Jogja" },
+    { "name": "Rizqia AC Jogja", "phone": "0878-6484-0007", "area": "Kotagede, Yogyakarta", "city": "Jogja" },
+    { "name": "Stay Cool", "phone": "0813-2595-7722", "area": "Wirobrajan & seluruh DIY", "city": "Jogja" },
+    { "name": "Sentosa Teknik", "phone": "0813-2595-7722", "area": "Bantul, Yogyakarta", "city": "Jogja" },
+    { "name": "Mas Prasetyo", "phone": "0878-7666-8949", "area": "Yogyakarta", "city": "Jogja" },
+
+    { "name": "AC Dlidir Solo", "phone": "0823-2667-7779", "area": "Kadipiro, Solo & sekitarnya", "city": "Solo" },
+    { "name": "Sinar Sejahtera Inti", "phone": "0896-5161-5588", "area": "Solo, Sukoharjo, Karanganyar", "city": "Solo" },
+    { "name": "Alifia Service AC", "phone": "0857-2526-8001", "area": "Solo, Sukoharjo, Klaten", "city": "Solo" },
+    { "name": "Bpk. Mujianto", "phone": "0823-1333-9779", "area": "Solo dan sekitarnya", "city": "Solo" },
+    { "name": "Indocool AC", "phone": "0851-0006-0665", "area": "Solo", "city": "Solo" },
+
+    { "name": "Surabaya Teknik AC", "phone": "0812-3456-7891", "area": "Seluruh Surabaya", "city": "Surabaya" },
+    { "name": "Hana Jaya Teknik", "phone": "0812-3082-7733", "area": "Seluruh Surabaya", "city": "Surabaya" },
+    { "name": "Dokter AC Surabaya", "phone": "0857-3088-8877", "area": "Surabaya, Sidoarjo, Gresik", "city": "Surabaya" },
+    { "name": "King Service AC Surabaya", "phone": "0812-3456-7890", "area": "Kenjeran, Surabaya", "city": "Surabaya" },
+    { "name": "Pak Midi", "phone": "0813-3286-6092", "area": "Surabaya, Nganjuk, Kediri", "city": "Surabaya" },
+    { "name": "Mas Nadip", "phone": "0878-7480-6496", "area": "Sidoarjo, Surabaya", "city": "Surabaya" },
+
+    { "name": "Sinar Bintang Teknik", "phone": "0812-4638-1744", "area": "Denpasar & sekitarnya", "city": "Bali" },
+    { "name": "Centra Teknik", "phone": "0896-7530-2145", "area": "Denpasar", "city": "Bali" },
+    { "name": "Gunawan Makmur Teknik", "phone": "0813-1500-2223", "area": "Seluruh Bali", "city": "Bali" },
+    { "name": "CV Astro Bali", "phone": "0815-5820-2773", "area": "Pemecutan Kelod, Denpasar", "city": "Bali" },
+    { "name": "Wayan Putra Teknik", "phone": "0819-1641-3774", "area": "Denpasar, Bali", "city": "Bali" },
+    { "name": "Mitra Engineering", "phone": "0857-3974-6931", "area": "Kota Denpasar", "city": "Bali" }
+  ],
+  "cityOrder": ["Jabodetabek", "Bandung", "Semarang", "Jogja", "Solo", "Surabaya", "Bali"]
+}
