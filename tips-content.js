@@ -193,6 +193,106 @@ const TIPS = [
         a: "Idealnya setiap 3–4 bulan untuk pemakaian normal rumahan. Pemakaian berat atau lingkungan berdebu bisa lebih sering."
       }
     ]
+  },
+  {
+    slug: "cara-memilih-pk-ac",
+    title: "Cara Memilih PK AC Sesuai Ukuran Ruangan (Tabel Lengkap)",
+    metaDescription: "AC ½ PK untuk ruangan berapa meter? Tabel lengkap ukuran ruangan vs PK AC, cara hitung kebutuhan BTU, dan kesalahan umum saat memilih PK.",
+    h1: "Cara Memilih PK AC Sesuai Ukuran Ruangan",
+    excerpt: "AC ½ PK untuk ruangan berapa meter? Ini tabel lengkap ukuran ruangan vs PK, plus kesalahan umum yang bikin AC-mu ga dingin dari hari pertama.",
+    body: `
+<p>Salah pilih PK itu masalah yang ga bisa diperbaiki sama service semahal apapun. AC kekecilan bakal kerja rodi terus-menerus (boros listrik, cepat rusak, tetap ga dingin), AC kegedean buang uang di depan. Ini panduannya.</p>
+
+<h2>Tabel PK vs Ukuran Ruangan</h2>
+<ul>
+<li><strong>½ PK</strong> (±5.000 BTU) → ruangan sampai <strong>10 m²</strong> (kamar 3×3)</li>
+<li><strong>¾ PK</strong> (±7.000 BTU) → <strong>10–14 m²</strong> (kamar 3×4)</li>
+<li><strong>1 PK</strong> (±9.000 BTU) → <strong>14–18 m²</strong> (kamar 4×4)</li>
+<li><strong>1½ PK</strong> (±12.000 BTU) → <strong>18–24 m²</strong> (ruang keluarga kecil)</li>
+<li><strong>2 PK</strong> (±18.000 BTU) → <strong>24–36 m²</strong> (ruang tamu besar / ruang usaha)</li>
+</ul>
+<p>Cara hitung cepatnya: <strong>luas ruangan (m²) × ±550 BTU</strong>, lalu pilih PK yang kapasitasnya di atas angka itu.</p>
+
+<h2>Kondisi yang Butuh PK Lebih Besar</h2>
+<p>Naikkan satu tingkat PK kalau ruanganmu:</p>
+<ul>
+<li>Kena matahari langsung (lantai atas, jendela hadap barat)</li>
+<li>Plafonnya tinggi (di atas 3 meter)</li>
+<li>Sering diisi banyak orang atau banyak elektronik menyala</li>
+<li>Terhubung terbuka ke ruangan lain (dapur/tangga tanpa sekat)</li>
+</ul>
+
+<h2>Kesalahan Paling Umum</h2>
+<ol>
+<li><strong>Beli ½ PK untuk ruang keluarga karena "hemat".</strong> AC-nya nyala 100% nonstop tanpa pernah mencapai suhu target — tagihan listriknya justru lebih boros daripada 1 PK yang kerja santai.</li>
+<li><strong>Percaya "AC-nya kurang dingin, harus tambah freon".</strong> Kalau PK-nya memang kekecilan untuk ruangannya, ditambah freon sebanyak apapun ga akan menolong — <a href="/tips/apakah-freon-ac-bisa-habis/">dan freon memang bukan barang yang perlu ditambah-tambah</a>.</li>
+<li><strong>Lupa faktor daya listrik rumah.</strong> Rumah 900VA sebaiknya pakai AC low watt (±320–500 watt) biar ga jeglek pas kompresor start.</li>
+</ol>
+
+<h2>Udah Tahu PK-nya? Ini Rekomendasinya</h2>
+<p>Kami rangkum <a href="/rekomendasi-ac-terbaik/">rekomendasi AC terbaik tahun ini</a> per kategori — dari yang paling hemat listrik, paling senyap, sampai yang paling aman untuk listrik 900VA. Dan setelah AC-nya terpasang, rawat pakai <a href="/">tukang AC jujur di kotamu</a>.</p>
+`,
+    faq: [
+      {
+        q: "AC ½ PK untuk ruangan berapa meter?",
+        a: "AC ½ PK (±5.000 BTU) ideal untuk ruangan sampai 10 m², misalnya kamar ukuran 3×3 meter dengan plafon standar dan tidak kena matahari langsung."
+      },
+      {
+        q: "Apa yang terjadi kalau PK AC kekecilan?",
+        a: "Kompresor akan bekerja terus-menerus tanpa pernah mencapai suhu target: ruangan tetap kurang dingin, tagihan listrik lebih boros, dan umur AC lebih pendek."
+      }
+    ]
+  },
+  {
+    slug: "ac-inverter-vs-non-inverter",
+    title: "AC Inverter vs Non-Inverter: Mana yang Lebih Worth It?",
+    metaDescription: "Perbedaan AC inverter dan non-inverter, kapan inverter benar-benar lebih hemat, dan kapan justru non-inverter yang lebih masuk akal untuk kamu.",
+    h1: "AC Inverter vs Non-Inverter",
+    excerpt: "Inverter lebih hemat listrik — tapi ga selalu lebih worth it. Ini cara kerjanya, hitungannya, dan kapan justru non-inverter yang lebih masuk akal.",
+    body: `
+<p>"Mending inverter, hemat listrik" — betul, tapi ga selalu. Jawabannya tergantung satu hal: <strong>berapa lama AC-mu nyala setiap hari</strong>. Ini penjelasannya tanpa jargon.</p>
+
+<h2>Cara Kerjanya (Versi Singkat)</h2>
+<ul>
+<li><strong>Non-inverter:</strong> kompresornya cuma kenal dua mode — nyala penuh atau mati total. Suhu tercapai, kompresor mati; suhu naik dikit, nyala penuh lagi. Siklus start-stop inilah yang boros, karena start kompresor itu momen paling rakus listrik.</li>
+<li><strong>Inverter:</strong> kompresornya bisa "ngegas setengah". Setelah ruangan dingin, dia pelan-pelan menjaga suhu tanpa mati-nyala. Lebih stabil, lebih senyap, dan jauh lebih irit di pemakaian panjang.</li>
+</ul>
+
+<h2>Kapan Inverter Worth It</h2>
+<ul>
+<li>AC nyala <strong>6 jam atau lebih per hari</strong> (kamar tidur tiap malam, WFH, ruang keluarga aktif)</li>
+<li>Kamu berencana pakai AC itu bertahun-tahun di ruangan yang sama</li>
+<li>Kamu sensitif sama suara — inverter jauh lebih senyap</li>
+</ul>
+<p>Di pola pemakaian seperti ini, selisih tagihan listriknya nyata dan harga unit yang lebih mahal biasanya balik modal dalam 1–2 tahun.</p>
+
+<h2>Kapan Non-Inverter Justru Lebih Masuk Akal</h2>
+<ul>
+<li>AC cuma nyala <strong>sebentar-sebentar</strong> (ruang tamu yang dipakai sesekali, kamar kos yang sering kosong)</li>
+<li>Budget terbatas — selisih harganya bisa sejutaan lebih</li>
+<li>Perbaikan lebih murah dan simpel: sparepart inverter (terutama modul PCB-nya) lebih mahal kalau rusak di luar garansi</li>
+</ul>
+
+<h2>Mitos yang Perlu Diluruskan</h2>
+<ol>
+<li><strong>"Inverter ga usah dicuci rutin."</strong> Salah. Inverter kotor sama ga dinginnya dengan non-inverter kotor — <a href="/tips/biaya-service-ac-wajar/">cuci rutin tetap wajib</a>.</li>
+<li><strong>"Inverter dinginnya lebih lama."</strong> Kebalikannya — kebanyakan inverter modern justru punya mode pendinginan cepat di awal.</li>
+<li><strong>"AC inverter freonnya beda dan harus sering diisi."</strong> Freon di sistem tertutup <a href="/tips/apakah-freon-ac-bisa-habis/">ga perlu diisi-isi kalau ga bocor</a> — inverter maupun bukan.</li>
+</ol>
+
+<h2>Lanjut: Pilih Unitnya</h2>
+<p>Sudah tahu tim inverter atau non-inverter? Cek <a href="/rekomendasi-ac-terbaik/">rekomendasi AC terbaik tahun ini</a> — ada kategori hemat listrik, low watt untuk 900VA, sampai pilihan budget. Pastikan juga <a href="/tips/cara-memilih-pk-ac/">PK-nya sesuai ukuran ruangan</a>.</p>
+`,
+    faq: [
+      {
+        q: "Apakah AC inverter lebih hemat listrik?",
+        a: "Ya, untuk pemakaian panjang (6+ jam per hari) inverter jelas lebih hemat karena kompresornya tidak bolak-balik start-stop. Untuk pemakaian singkat dan jarang, selisihnya kecil dan non-inverter bisa lebih masuk akal secara total biaya."
+      },
+      {
+        q: "Apa kekurangan AC inverter?",
+        a: "Harga unit lebih mahal, dan biaya perbaikan di luar garansi lebih tinggi — terutama modul elektroniknya. Kelebihannya: lebih irit di pemakaian panjang, suhu stabil, dan lebih senyap."
+      }
+    ]
   }
 ];
 
