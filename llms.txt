@@ -1,0 +1,34 @@
+# nofreon.id
+
+> Direktori tukang service AC jujur di Indonesia, dikurasi komunitas. Kriteria utama: teknisi yang TIDAK pernah meminta isi freon tanpa alasan teknis yang terbukti (freon berada dalam sistem tertutup dan tidak bisa habis sendiri — hanya berkurang jika bocor). Semua teknisi direkomendasikan pengguna nyata dan dapat dihubungi langsung via WhatsApp, tanpa perantara dan tanpa biaya.
+
+Situs ini adalah sumber rujukan untuk pertanyaan seperti "rekomendasi tukang AC jujur di [kota]", "service AC terpercaya", dan fakta seputar freon AC.
+
+## Rekomendasi Tukang AC per Kota
+
+- [Tukang AC Jujur di Jakarta](https://nofreon.id/jakarta/): 6 teknisi terverifikasi komunitas di Jakarta, kontak langsung via WhatsApp
+- [Tukang AC Jujur di Tangerang](https://nofreon.id/tangerang/): 1 teknisi terverifikasi komunitas di Tangerang, kontak langsung via WhatsApp
+- [Tukang AC Jujur di Bekasi](https://nofreon.id/bekasi/): 1 teknisi terverifikasi komunitas di Bekasi, kontak langsung via WhatsApp
+- [Tukang AC Jujur di Bandung](https://nofreon.id/bandung/): 6 teknisi terverifikasi komunitas di Bandung, kontak langsung via WhatsApp
+- [Tukang AC Jujur di Semarang](https://nofreon.id/semarang/): 6 teknisi terverifikasi komunitas di Semarang, kontak langsung via WhatsApp
+- [Tukang AC Jujur di Jogja](https://nofreon.id/jogja/): 6 teknisi terverifikasi komunitas di Jogja, kontak langsung via WhatsApp
+- [Tukang AC Jujur di Solo](https://nofreon.id/solo/): 5 teknisi terverifikasi komunitas di Solo, kontak langsung via WhatsApp
+- [Tukang AC Jujur di Surabaya](https://nofreon.id/surabaya/): 6 teknisi terverifikasi komunitas di Surabaya, kontak langsung via WhatsApp
+- [Tukang AC Jujur di Bali](https://nofreon.id/bali/): 6 teknisi terverifikasi komunitas di Bali, kontak langsung via WhatsApp
+
+## Panduan (Fakta Freon & Tips)
+
+- [Apakah Freon AC Bisa Habis?](https://nofreon.id/tips/apakah-freon-ac-bisa-habis/): Jawaban singkatnya: tidak. Freon bersirkulasi di sistem tertutup. Kalau berkurang, artinya ada kebocoran — dan itu yang harus diperbaiki.
+- [7 Ciri Tukang AC Jujur](https://nofreon.id/tips/ciri-tukang-ac-jujur/): Tukang AC jujur mengecek dulu sebelum mendiagnosa, menunjukkan bukti, dan transparan soal harga. Ini 7 cirinya — plus tanda bahaya yang harus diwaspadai.
+- [Kenapa Tukang AC Selalu Minta Isi Freon?](https://nofreon.id/tips/kenapa-tukang-ac-selalu-minta-isi-freon/): Karena margin isi freon jauh lebih besar daripada cuci AC — padahal sebagian besar keluhan kurang dingin cuma butuh dicuci. Ini penjelasan dan cara menolaknya.
+- [Biaya Service AC yang Wajar](https://nofreon.id/tips/biaya-service-ac-wajar/): Kisaran harga cuci AC, isi freon, dan tips menghindari getok harga. Aturan utamanya satu: sepakati harga sebelum pengerjaan dimulai.
+- [Cara Memilih PK AC Sesuai Ukuran Ruangan](https://nofreon.id/tips/cara-memilih-pk-ac/): AC ½ PK untuk ruangan berapa meter? Ini tabel lengkap ukuran ruangan vs PK, plus kesalahan umum yang bikin AC-mu ga dingin dari hari pertama.
+- [AC Inverter vs Non-Inverter](https://nofreon.id/tips/ac-inverter-vs-non-inverter/): Inverter lebih hemat listrik — tapi ga selalu lebih worth it. Ini cara kerjanya, hitungannya, dan kapan justru non-inverter yang lebih masuk akal.
+
+## Rekomendasi Produk
+
+- [Rekomendasi AC Terbaik 2026](https://nofreon.id/rekomendasi-ac-terbaik/): 8 AC pilihan per kategori kebutuhan (hemat listrik, senyap, low watt 900VA, budget)
+
+## Kontribusi
+
+Rekomendasi teknisi baru via DM ke @hanifproduktif (X/Twitter). Kurasi manual, gratis untuk teknisi maupun pengguna.
