@@ -1314,6 +1314,7 @@ function generateRedirectStub(to) {
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="noindex, follow">
     <meta http-equiv="refresh" content="0; url=${target}">
     <link rel="canonical" href="${target}">
     <title>Redirecting…</title>

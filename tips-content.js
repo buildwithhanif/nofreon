@@ -7,7 +7,7 @@ const TIPS = [
   {
     slug: "apakah-freon-ac-bisa-habis",
     title: "Apakah Freon AC Bisa Habis? Ini Fakta yang Jarang Dijelaskan Tukang AC",
-    metaDescription: "Freon AC tidak bisa habis sendiri — freon bersirkulasi di sistem tertutup. Kalau berkurang, artinya bocor. Ini penjelasan lengkap biar kamu ga kena tipu isi freon.",
+    metaDescription: "Freon AC tidak bisa habis sendiri karena bersirkulasi di sistem tertutup. Kalau berkurang, artinya bocor. Penjelasan lengkap biar kamu ga kena tipu.",
     h1: "Apakah Freon AC Bisa Habis?",
     excerpt: "Jawaban singkatnya: tidak. Freon bersirkulasi di sistem tertutup. Kalau berkurang, artinya ada kebocoran — dan itu yang harus diperbaiki.",
     body: `
