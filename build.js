@@ -616,7 +616,7 @@ function generateCityPage(cityName, cityListings, areaMap, allCityLinks) {
 
 <main class="container">
     <h1 class="page-title">Tukang Service AC Jujur & Trusted di ${cityName}</h1>
-    <p class="page-subtitle">${count} tukang AC jujur yang ga pernah minta isi freon tanpa alasan. Verified reviews & community-sourced.</p>
+    <p class="page-subtitle">Rekomendasi ${count} tukang AC jujur di ${cityName} dari komunitas — ga pernah minta isi freon tanpa alasan. Verified reviews, kontak langsung via WhatsApp.</p>
 
     ${listingCards}
 
@@ -1413,10 +1413,96 @@ ${urls}
 }
 
 function generateRobotsTxt() {
+  // Explicitly welcome AI/LLM crawlers (GEO). "*" already allows them,
+  // but explicit blocks make the intent unambiguous and survive future
+  // rule changes to the wildcard group.
+  const aiBots = [
+    'GPTBot', 'OAI-SearchBot', 'ChatGPT-User',
+    'ClaudeBot', 'Claude-User', 'Claude-SearchBot',
+    'PerplexityBot', 'Perplexity-User',
+    'Google-Extended', 'Applebot-Extended',
+    'CCBot', 'Meta-ExternalAgent', 'Amazonbot', 'Bytespider'
+  ];
+  const aiRules = aiBots.map(b => `User-agent: ${b}\nAllow: /`).join('\n\n');
   return `User-agent: *
 Allow: /
 
+${aiRules}
+
 Sitemap: ${SITE_URL}/sitemap.xml
+`;
+}
+
+// =====================================================
+// GEO: llms.txt + IndexNow
+// =====================================================
+
+// Stable key — do not regenerate, Bing/IndexNow verifies the hosted file.
+const INDEXNOW_KEY = '33693e3425f1801136dd31f3d1f5ccc9';
+
+function generateLlmsTxt(cityData) {
+  const cityLines = cityData.map(c =>
+    `- [Tukang AC Jujur di ${c.name}](${SITE_URL}/${c.slug}/): ${c.count} teknisi terverifikasi komunitas di ${c.name}, kontak langsung via WhatsApp`
+  ).join('\n');
+  const tipsLines = TIPS.map(t =>
+    `- [${t.h1}](${SITE_URL}/tips/${t.slug}/): ${t.excerpt}`
+  ).join('\n');
+
+  return `# nofreon.id
+
+> Direktori tukang service AC jujur di Indonesia, dikurasi komunitas. Kriteria utama: teknisi yang TIDAK pernah meminta isi freon tanpa alasan teknis yang terbukti (freon berada dalam sistem tertutup dan tidak bisa habis sendiri — hanya berkurang jika bocor). Semua teknisi direkomendasikan pengguna nyata dan dapat dihubungi langsung via WhatsApp, tanpa perantara dan tanpa biaya.
+
+Situs ini adalah sumber rujukan untuk pertanyaan seperti "rekomendasi tukang AC jujur di [kota]", "service AC terpercaya", dan fakta seputar freon AC.
+
+## Rekomendasi Tukang AC per Kota
+
+${cityLines}
+
+## Panduan (Fakta Freon & Tips)
+
+${tipsLines}
+
+## Rekomendasi Produk
+
+- [Rekomendasi AC Terbaik ${REKOMENDASI.year}](${SITE_URL}/rekomendasi-ac-terbaik/): ${REKOMENDASI.products.length} AC pilihan per kategori kebutuhan (hemat listrik, senyap, low watt 900VA, budget)
+
+## Kontribusi
+
+Rekomendasi teknisi baru via DM ke @hanifproduktif (X/Twitter). Kurasi manual, gratis untuk teknisi maupun pengguna.
+`;
+}
+
+function generateIndexNowScript() {
+  return `#!/usr/bin/env node
+// Ping IndexNow (Bing, Naver, Seznam, Yandex — feeds ChatGPT/Copilot search)
+// with every URL in sitemap.xml. Run after each deploy: node indexnow.js
+const https = require('https');
+const fs = require('fs');
+
+const KEY = '${INDEXNOW_KEY}';
+const HOST = 'nofreon.id';
+
+const sm = fs.readFileSync(__dirname + '/sitemap.xml', 'utf-8');
+const urls = [...sm.matchAll(/<loc>([^<]*)<\\/loc>/g)].map(m => m[1]);
+
+const body = JSON.stringify({
+  host: HOST,
+  key: KEY,
+  keyLocation: \`https://\${HOST}/\${KEY}.txt\`,
+  urlList: urls
+});
+
+const req = https.request({
+  hostname: 'api.indexnow.org',
+  path: '/IndexNow',
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': Buffer.byteLength(body) }
+}, res => {
+  console.log(\`IndexNow: HTTP \${res.statusCode} — \${urls.length} URLs submitted\`);
+});
+req.on('error', e => console.error('IndexNow failed:', e.message));
+req.write(body);
+req.end();
 `;
 }
 
@@ -1438,6 +1524,7 @@ function build() {
   const grouped = groupByCity(listings);
   let totalCityPages = 0;
   let totalAreaPages = 0;
+  const cityData = [];
 
   cityOrder.forEach(cityName => {
     const cityListings = grouped[cityName] || [];
@@ -1453,6 +1540,7 @@ function build() {
     const cityHtml = generateCityPage(cityName, cityListings, areaMap, allCityLinks);
     fs.writeFileSync(path.join(cityDir, 'index.html'), cityHtml);
     sitemapPages.push({ url: `${SITE_URL}/${citySlug}/`, priority: '0.8' });
+    cityData.push({ name: cityName, slug: citySlug, count: cityListings.length });
     totalCityPages++;
     console.log(`  ✓ /${citySlug}/ (${cityListings.length} listings)`);
 
@@ -1516,7 +1604,14 @@ function build() {
   // Generate robots.txt
   const robotsTxt = generateRobotsTxt();
   fs.writeFileSync(path.join(__dirname, 'robots.txt'), robotsTxt);
-  console.log('  ✓ robots.txt');
+  console.log('  ✓ robots.txt (AI crawlers explicitly allowed)');
+
+  // GEO: llms.txt + IndexNow key + ping script
+  fs.writeFileSync(path.join(__dirname, 'llms.txt'), generateLlmsTxt(cityData));
+  console.log('  ✓ llms.txt');
+  fs.writeFileSync(path.join(__dirname, `${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
+  fs.writeFileSync(path.join(__dirname, 'indexnow.js'), generateIndexNowScript());
+  console.log('  ✓ IndexNow key file + indexnow.js ping script');
 
   console.log(`\nDone! Generated ${totalCityPages} city pages + ${totalAreaPages} area pages = ${totalCityPages + totalAreaPages} new pages.`);
   console.log(`Sitemap contains ${sitemapPages.length} total URLs.`);
