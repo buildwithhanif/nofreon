@@ -65,20 +65,25 @@ function extractAreaNames(areaString) {
       return true;
     })
     .map(part => {
-      // Remove "Kota " prefix for cleaner slugs but keep display name
-      return part;
+      // Normalize: "Kota Bandung" -> "Bandung", "Bandung Area" -> "Bandung".
+      // Prevents duplicate pages targeting the same keyword.
+      return part.replace(/^Kota\s+/i, '').replace(/\s+Area$/i, '');
     });
 }
 
 /**
  * Build a map of { areaName: [listings] } for a given city's listings.
  * Each listing can appear under multiple areas.
+ * Areas whose slug equals the city slug are skipped — they would
+ * cannibalize the city page for the same search query.
  */
-function buildAreaMap(cityListings) {
+function buildAreaMap(cityListings, cityName) {
   const areaMap = {};
+  const citySlug = slugify(cityName);
   cityListings.forEach(listing => {
     const areas = extractAreaNames(listing.area);
     areas.forEach(areaName => {
+      if (slugify(areaName) === citySlug) return;
       if (!areaMap[areaName]) areaMap[areaName] = [];
       // Avoid duplicates
       if (!areaMap[areaName].find(l => l.name === listing.name && l.phone === listing.phone)) {
@@ -1286,6 +1291,77 @@ function generateTipsIndex(allTips) {
 }
 
 // =====================================================
+// REDIRECT STUBS + 404
+// =====================================================
+
+// Old URLs (crawled while live) that now merge into stronger pages.
+// Meta-refresh(0) + canonical passes their signal to the target.
+const REDIRECTS = [
+  { from: 'bekasi/kota-bekasi', to: '/bekasi/' },
+  { from: 'bandung/kota-bandung', to: '/bandung/' },
+  { from: 'bandung/bandung-area', to: '/bandung/' },
+  { from: 'semarang/semarang', to: '/semarang/' },
+  { from: 'solo/solo', to: '/solo/' },
+  { from: 'surabaya/surabaya', to: '/surabaya/' },
+  { from: 'bali/bali', to: '/bali/' },
+  { from: 'jogja/kota-yogyakarta', to: '/jogja/yogyakarta/' },
+  { from: 'bali/kota-denpasar', to: '/bali/denpasar/' }
+];
+
+function generateRedirectStub(to) {
+  const target = SITE_URL + to;
+  return `<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=${target}">
+    <link rel="canonical" href="${target}">
+    <title>Redirecting…</title>
+</head>
+<body>
+    <p>Halaman ini pindah ke <a href="${target}">${target}</a>.</p>
+</body>
+</html>`;
+}
+
+function generate404Page() {
+  return `<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Tidak Ditemukan — nofreon.id</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>${SHARED_CSS}</style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="logo"><a href="/"><span class="no">no</span>freon.id</a></div>
+        <div class="tagline">404</div>
+        <p class="hero-desc">Halaman ini ga ketemu — kayak freon yang katanya "habis". 🤷</p>
+    </div>
+</header>
+
+<main class="container" style="text-align: center; padding-top: 40px;">
+    <p style="color: var(--text-secondary); margin-bottom: 24px;">Mungkin kamu nyari salah satu dari ini:</p>
+    <div class="cross-links-list" style="justify-content: center;">
+        <a class="area-link" href="/">Daftar Tukang AC Jujur</a>
+        <a class="area-link" href="/rekomendasi-ac-terbaik/">Rekomendasi AC Terbaik</a>
+        <a class="area-link" href="/tips/">Panduan Anti Kena Tipu</a>
+    </div>
+</main>
+
+</body>
+</html>`;
+}
+
+// =====================================================
 // HOMEPAGE STATIC LISTINGS (crawlable content)
 // =====================================================
 
@@ -1368,7 +1444,7 @@ function build() {
     if (cityListings.length === 0) return;
 
     const citySlug = slugify(cityName);
-    const areaMap = buildAreaMap(cityListings);
+    const areaMap = buildAreaMap(cityListings, cityName);
 
     // Generate city page
     const cityDir = path.join(__dirname, citySlug);
@@ -1416,6 +1492,16 @@ function build() {
   fs.writeFileSync(path.join(rekoDir, 'index.html'), generateRekomendasiPage());
   sitemapPages.push({ url: `${SITE_URL}/rekomendasi-ac-terbaik/`, priority: '0.8' });
   console.log(`  ✓ /rekomendasi-ac-terbaik/ (${REKOMENDASI.products.length} products)`);
+
+  // Redirect stubs for merged/removed URLs + 404 page
+  REDIRECTS.forEach(r => {
+    const dir = path.join(__dirname, r.from);
+    ensureDir(dir);
+    fs.writeFileSync(path.join(dir, 'index.html'), generateRedirectStub(r.to));
+  });
+  console.log(`  ✓ ${REDIRECTS.length} redirect stubs`);
+  fs.writeFileSync(path.join(__dirname, '404.html'), generate404Page());
+  console.log('  ✓ 404.html');
 
   // Inject static (crawlable) listings into homepage
   if (injectStaticListings()) {

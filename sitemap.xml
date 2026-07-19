@@ -79,22 +79,10 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/bekasi/kota-bekasi/</loc>
-    <lastmod>2026-07-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://nofreon.id/bandung/</loc>
     <lastmod>2026-07-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nofreon.id/bandung/bandung-area/</loc>
-    <lastmod>2026-07-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://nofreon.id/bandung/bandung-barat/</loc>
@@ -139,12 +127,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/bandung/kota-bandung/</loc>
-    <lastmod>2026-07-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://nofreon.id/bandung/lengkong/</loc>
     <lastmod>2026-07-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -175,12 +157,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/semarang/semarang/</loc>
-    <lastmod>2026-07-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://nofreon.id/semarang/semarang-barat/</loc>
     <lastmod>2026-07-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -200,12 +176,6 @@
   </url>
   <url>
     <loc>https://nofreon.id/jogja/condongcatur/</loc>
-    <lastmod>2026-07-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://nofreon.id/jogja/kota-yogyakarta/</loc>
     <lastmod>2026-07-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -259,12 +229,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/solo/solo/</loc>
-    <lastmod>2026-07-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://nofreon.id/solo/sukoharjo/</loc>
     <lastmod>2026-07-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -307,31 +271,13 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/surabaya/surabaya/</loc>
-    <lastmod>2026-07-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://nofreon.id/bali/</loc>
     <lastmod>2026-07-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nofreon.id/bali/bali/</loc>
-    <lastmod>2026-07-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://nofreon.id/bali/denpasar/</loc>
-    <lastmod>2026-07-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://nofreon.id/bali/kota-denpasar/</loc>
     <lastmod>2026-07-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
