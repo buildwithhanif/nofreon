@@ -13,6 +13,7 @@ const BUILD_DATE = new Date().toISOString().split('T')[0];
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8'));
 const { listings, cityOrder } = data;
 const { TIPS } = require('./tips-content.js');
+const { REKOMENDASI } = require('./rekomendasi-content.js');
 
 // =====================================================
 // UTILITIES
@@ -64,20 +65,25 @@ function extractAreaNames(areaString) {
       return true;
     })
     .map(part => {
-      // Remove "Kota " prefix for cleaner slugs but keep display name
-      return part;
+      // Normalize: "Kota Bandung" -> "Bandung", "Bandung Area" -> "Bandung".
+      // Prevents duplicate pages targeting the same keyword.
+      return part.replace(/^Kota\s+/i, '').replace(/\s+Area$/i, '');
     });
 }
 
 /**
  * Build a map of { areaName: [listings] } for a given city's listings.
  * Each listing can appear under multiple areas.
+ * Areas whose slug equals the city slug are skipped — they would
+ * cannibalize the city page for the same search query.
  */
-function buildAreaMap(cityListings) {
+function buildAreaMap(cityListings, cityName) {
   const areaMap = {};
+  const citySlug = slugify(cityName);
   cityListings.forEach(listing => {
     const areas = extractAreaNames(listing.area);
     areas.forEach(areaName => {
+      if (slugify(areaName) === citySlug) return;
       if (!areaMap[areaName]) areaMap[areaName] = [];
       // Avoid duplicates
       if (!areaMap[areaName].find(l => l.name === listing.name && l.phone === listing.phone)) {
@@ -455,6 +461,24 @@ const SHARED_CSS = `
         }
         .phone-btn { width: 100%; justify-content: center; }
     }
+
+    /* REKO CTA */
+    .reko-cta {
+        display: block;
+        background: var(--text);
+        color: white;
+        border-radius: var(--radius);
+        padding: 18px 22px;
+        margin: 24px 0;
+        text-decoration: none;
+        transition: opacity 0.15s;
+    }
+
+    .reko-cta:hover { opacity: 0.9; }
+
+    .reko-cta strong { display: block; font-size: 15px; margin-bottom: 2px; color: white; }
+
+    .reko-cta span { font-size: 13px; opacity: 0.75; }
 `;
 
 const WA_ICON = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
@@ -595,6 +619,8 @@ function generateCityPage(cityName, cityListings, areaMap, allCityLinks) {
     <p class="page-subtitle">${count} tukang AC jujur yang ga pernah minta isi freon tanpa alasan. Verified reviews & community-sourced.</p>
 
     ${listingCards}
+
+    ${rekomendasiCta()}
 
     ${areaLinksHtml}
 
@@ -872,6 +898,209 @@ const ARTICLE_CSS = `
     }
 `;
 
+const PRODUCT_CSS = `
+    .disclosure {
+        font-size: 12px;
+        color: var(--text-secondary);
+        background: var(--accent-light);
+        border-radius: 8px;
+        padding: 10px 14px;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    .product-card {
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        padding: 20px;
+        margin-bottom: 12px;
+    }
+
+    .product-badge {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--accent);
+        background: var(--accent-light);
+        padding: 3px 10px;
+        border-radius: 100px;
+        margin-bottom: 8px;
+    }
+
+    .product-card h3 {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .product-specs {
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+    }
+
+    .product-why {
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 12px;
+    }
+
+    .product-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .product-price {
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .product-price span {
+        display: block;
+        font-size: 11px;
+        font-weight: 400;
+        color: var(--text-secondary);
+    }
+
+    .shopee-btn {
+        display: inline-block;
+        background: #EE4D2D;
+        color: white;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 10px 20px;
+        border-radius: 100px;
+        text-decoration: none;
+        transition: opacity 0.15s;
+        white-space: nowrap;
+    }
+
+    .shopee-btn:hover {
+        opacity: 0.85;
+    }
+
+    .best-for {
+        font-size: 12px;
+        color: var(--green);
+        background: var(--green-light);
+        padding: 3px 10px;
+        border-radius: 100px;
+        font-weight: 600;
+    }
+
+`;
+
+function rekomendasiCta() {
+  return `
+        <a class="reko-cta" href="/rekomendasi-ac-terbaik/">
+            <strong>Lagi cari AC baru? 🛒</strong>
+            <span>Rekomendasi AC Terbaik ${REKOMENDASI.year} — per kategori: paling hemat listrik, paling senyap, terbaik untuk 900VA →</span>
+        </a>`;
+}
+
+function generateRekomendasiPage() {
+  const canonical = `${SITE_URL}/rekomendasi-ac-terbaik/`;
+  const title = `Rekomendasi AC Terbaik ${REKOMENDASI.year} — Pilihan per Kategori | nofreon.id`;
+  const description = `${REKOMENDASI.products.length} rekomendasi AC terbaik ${REKOMENDASI.year}: paling hemat listrik, paling senyap, low watt untuk 900VA, sampai pilihan budget. Diupdate ${REKOMENDASI.updated}.`;
+
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": `Rekomendasi AC Terbaik ${REKOMENDASI.year}`,
+    "description": description,
+    "url": canonical,
+    "numberOfItems": REKOMENDASI.products.length,
+    "itemListElement": REKOMENDASI.products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": { "@type": "Product", "name": p.name, "description": p.why }
+    }))
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "nofreon.id", "item": SITE_URL + "/" },
+      { "@type": "ListItem", "position": 2, "name": `Rekomendasi AC Terbaik ${REKOMENDASI.year}`, "item": canonical }
+    ]
+  };
+
+  const productCards = REKOMENDASI.products.map(p => {
+    const link = p.shopeeLink || `https://shopee.co.id/search?keyword=${encodeURIComponent(p.name)}`;
+    return `
+    <div class="product-card">
+        <span class="product-badge">${p.badge}</span>
+        <h3>${p.name}</h3>
+        <div class="product-specs">${p.specs}</div>
+        <p class="product-why">${p.why}</p>
+        <div class="product-meta">
+            <div class="product-price">${p.priceRange}<span>kisaran — cek harga terbaru</span></div>
+            <span class="best-for">✓ ${p.bestFor}</span>
+            <a class="shopee-btn" href="${link}" target="_blank" rel="nofollow sponsored noopener">Cek Harga di Shopee →</a>
+        </div>
+    </div>`;
+  }).join('\n');
+
+  return `<!DOCTYPE html>
+<html lang="id">
+<head>
+    ${pageHead({ title, description, canonical, schemas: [itemListSchema, breadcrumbSchema], extraCss: ARTICLE_CSS + PRODUCT_CSS })}
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="logo"><a href="/"><span class="no">no</span>freon.id</a></div>
+        <div class="tagline">rekomendasi ${REKOMENDASI.year}</div>
+    </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">nofreon.id</a>
+    <span class="sep">›</span>
+    <strong>Rekomendasi AC Terbaik ${REKOMENDASI.year}</strong>
+</nav>
+
+<main class="article">
+    <h1 class="page-title">Rekomendasi AC Terbaik ${REKOMENDASI.year}</h1>
+    <p class="page-subtitle">Dipilih per kategori kebutuhan — bukan sekadar daftar merk. Diupdate ${REKOMENDASI.updated}.</p>
+
+    <div class="disclosure">Halaman ini mengandung link afiliasi. Kalau kamu beli lewat link di sini, nofreon.id dapat komisi kecil — tanpa biaya tambahan apapun buat kamu. Itu yang bikin direktori tukang AC jujur ini tetap gratis.</div>
+
+    ${productCards}
+
+    <h2>Cara Pakai Daftar Ini</h2>
+    <ol>
+    <li><strong>Tentukan PK dulu.</strong> Salah PK = ga dingin selamanya, semahal apapun unitnya. <a href="/tips/cara-memilih-pk-ac/">Cek tabel PK vs ukuran ruangan</a>.</li>
+    <li><strong>Cek daya listrik rumahmu.</strong> Listrik 900VA? Langsung lihat kategori low watt di atas.</li>
+    <li><strong>Inverter kalau AC nyala 6+ jam per hari.</strong> Kalau cuma sesekali, non-inverter lebih masuk akal — <a href="/tips/ac-inverter-vs-non-inverter/">ini hitungannya</a>.</li>
+    <li><strong>Beli dari toko resmi</strong> (official store) biar garansinya jelas, dan pastikan harga sudah termasuk atau belum termasuk pemasangan.</li>
+    </ol>
+
+    <h2>Setelah Beli: Pasang & Rawat dengan Benar</h2>
+    <p>Pemasangan yang buruk (flaring asal-asalan, vakum ga bener) adalah penyebab nomor satu kebocoran freon di kemudian hari — dan itu pintu masuk <a href="/tips/kenapa-tukang-ac-selalu-minta-isi-freon/">drama "isi freon" tahunan</a>. Pakai teknisi yang jelas track record-nya: <a href="/">daftar tukang AC jujur per kota ada di sini</a>.</p>
+</main>
+
+<div class="footer">
+    <p>
+        Cari tukang AC jujur di kotamu?<br>
+        <a href="/">Lihat daftar tukang AC trusted →</a>
+    </p>
+    <div class="stats">nofreon.id · rekomendasi ${REKOMENDASI.year} · updated ${REKOMENDASI.updated}</div>
+</div>
+
+</body>
+</html>`;
+}
+
 function tipsLinksBlock() {
   return `
         <div class="cross-links">
@@ -988,6 +1217,7 @@ function generateTipsPage(tip, allTips) {
 <main class="article">
     <h1 class="page-title">${tip.h1}</h1>
     ${tip.body}
+    ${rekomendasiCta()}
     ${faqHtml}
     ${relatedHtml}
 </main>
@@ -1055,6 +1285,77 @@ function generateTipsIndex(allTips) {
     </p>
     <div class="stats">nofreon.id · ${allTips.length} panduan · updated 2026</div>
 </div>
+
+</body>
+</html>`;
+}
+
+// =====================================================
+// REDIRECT STUBS + 404
+// =====================================================
+
+// Old URLs (crawled while live) that now merge into stronger pages.
+// Meta-refresh(0) + canonical passes their signal to the target.
+const REDIRECTS = [
+  { from: 'bekasi/kota-bekasi', to: '/bekasi/' },
+  { from: 'bandung/kota-bandung', to: '/bandung/' },
+  { from: 'bandung/bandung-area', to: '/bandung/' },
+  { from: 'semarang/semarang', to: '/semarang/' },
+  { from: 'solo/solo', to: '/solo/' },
+  { from: 'surabaya/surabaya', to: '/surabaya/' },
+  { from: 'bali/bali', to: '/bali/' },
+  { from: 'jogja/kota-yogyakarta', to: '/jogja/yogyakarta/' },
+  { from: 'bali/kota-denpasar', to: '/bali/denpasar/' }
+];
+
+function generateRedirectStub(to) {
+  const target = SITE_URL + to;
+  return `<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=${target}">
+    <link rel="canonical" href="${target}">
+    <title>Redirecting…</title>
+</head>
+<body>
+    <p>Halaman ini pindah ke <a href="${target}">${target}</a>.</p>
+</body>
+</html>`;
+}
+
+function generate404Page() {
+  return `<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Tidak Ditemukan — nofreon.id</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>${SHARED_CSS}</style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="logo"><a href="/"><span class="no">no</span>freon.id</a></div>
+        <div class="tagline">404</div>
+        <p class="hero-desc">Halaman ini ga ketemu — kayak freon yang katanya "habis". 🤷</p>
+    </div>
+</header>
+
+<main class="container" style="text-align: center; padding-top: 40px;">
+    <p style="color: var(--text-secondary); margin-bottom: 24px;">Mungkin kamu nyari salah satu dari ini:</p>
+    <div class="cross-links-list" style="justify-content: center;">
+        <a class="area-link" href="/">Daftar Tukang AC Jujur</a>
+        <a class="area-link" href="/rekomendasi-ac-terbaik/">Rekomendasi AC Terbaik</a>
+        <a class="area-link" href="/tips/">Panduan Anti Kena Tipu</a>
+    </div>
+</main>
 
 </body>
 </html>`;
@@ -1143,7 +1444,7 @@ function build() {
     if (cityListings.length === 0) return;
 
     const citySlug = slugify(cityName);
-    const areaMap = buildAreaMap(cityListings);
+    const areaMap = buildAreaMap(cityListings, cityName);
 
     // Generate city page
     const cityDir = path.join(__dirname, citySlug);
@@ -1184,6 +1485,23 @@ function build() {
     sitemapPages.push({ url: `${SITE_URL}/tips/${tip.slug}/`, priority: '0.7' });
     console.log(`    ✓ /tips/${tip.slug}/`);
   });
+
+  // Generate rekomendasi (money) page
+  const rekoDir = path.join(__dirname, 'rekomendasi-ac-terbaik');
+  ensureDir(rekoDir);
+  fs.writeFileSync(path.join(rekoDir, 'index.html'), generateRekomendasiPage());
+  sitemapPages.push({ url: `${SITE_URL}/rekomendasi-ac-terbaik/`, priority: '0.8' });
+  console.log(`  ✓ /rekomendasi-ac-terbaik/ (${REKOMENDASI.products.length} products)`);
+
+  // Redirect stubs for merged/removed URLs + 404 page
+  REDIRECTS.forEach(r => {
+    const dir = path.join(__dirname, r.from);
+    ensureDir(dir);
+    fs.writeFileSync(path.join(dir, 'index.html'), generateRedirectStub(r.to));
+  });
+  console.log(`  ✓ ${REDIRECTS.length} redirect stubs`);
+  fs.writeFileSync(path.join(__dirname, '404.html'), generate404Page());
+  console.log('  ✓ 404.html');
 
   // Inject static (crawlable) listings into homepage
   if (injectStaticListings()) {
