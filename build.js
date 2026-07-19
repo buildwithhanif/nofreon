@@ -506,8 +506,8 @@ function renderListingCard(item, index) {
 function generateCityPage(cityName, cityListings, areaMap, allCityLinks) {
   const citySlug = slugify(cityName);
   const count = cityListings.length;
-  const title = `Service AC ${cityName} — Tukang AC Jujur & Trusted | nofreon.id`;
-  const description = `Daftar ${count} tukang AC jujur & trusted di ${cityName}. Ga pernah minta isi freon tanpa alasan. Hubungi langsung via WhatsApp.`;
+  const title = `Tukang AC ${cityName} — Jujur & Ga Minta Freon | nofreon.id`;
+  const description = `Tukang AC ${cityName} jujur & terpercaya: ${count} teknisi service AC yang ga pernah minta isi freon. Kontak langsung via WhatsApp.`;
   const canonical = `${SITE_URL}/${citySlug}/`;
 
   const areaNames = Object.keys(areaMap).sort();
@@ -620,8 +620,8 @@ function generateCityPage(cityName, cityListings, areaMap, allCityLinks) {
 </nav>
 
 <main class="container">
-    <h1 class="page-title">Tukang Service AC Jujur & Trusted di ${cityName}</h1>
-    <p class="page-subtitle">Rekomendasi ${count} tukang AC jujur di ${cityName} dari komunitas — ga pernah minta isi freon tanpa alasan. Verified reviews, kontak langsung via WhatsApp.</p>
+    <h1 class="page-title">Tukang AC ${cityName} yang Jujur — Ga Pernah Minta Isi Freon</h1>
+    <p class="page-subtitle">Rekomendasi ${count} tukang AC & jasa service AC di ${cityName} yang jujur, dikurasi komunitas — ga pernah minta isi freon tanpa alasan. Kontak langsung via WhatsApp.</p>
 
     ${listingCards}
 
