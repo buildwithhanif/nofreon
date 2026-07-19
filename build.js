@@ -12,6 +12,7 @@ const BUILD_DATE = new Date().toISOString().split('T')[0];
 // =====================================================
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8'));
 const { listings, cityOrder } = data;
+const { TIPS } = require('./tips-content.js');
 
 // =====================================================
 // UTILITIES
@@ -481,8 +482,8 @@ function renderListingCard(item, index) {
 function generateCityPage(cityName, cityListings, areaMap, allCityLinks) {
   const citySlug = slugify(cityName);
   const count = cityListings.length;
-  const title = `Service AC ${cityName} Trusted — nofreon.id`;
-  const description = `Daftar ${count} tukang service AC trusted di ${cityName}. Ga minta isi freon. Verified reviews & community-sourced.`;
+  const title = `Service AC ${cityName} — Tukang AC Jujur & Trusted | nofreon.id`;
+  const description = `Daftar ${count} tukang AC jujur & trusted di ${cityName}. Ga pernah minta isi freon tanpa alasan. Hubungi langsung via WhatsApp.`;
   const canonical = `${SITE_URL}/${citySlug}/`;
 
   const areaNames = Object.keys(areaMap).sort();
@@ -590,12 +591,14 @@ function generateCityPage(cityName, cityListings, areaMap, allCityLinks) {
 </nav>
 
 <main class="container">
-    <h1 class="page-title">Tukang Service AC Trusted di ${cityName}</h1>
-    <p class="page-subtitle">${count} tukang AC trusted yang ga pernah minta isi freon. Verified reviews & community-sourced.</p>
+    <h1 class="page-title">Tukang Service AC Jujur & Trusted di ${cityName}</h1>
+    <p class="page-subtitle">${count} tukang AC jujur yang ga pernah minta isi freon tanpa alasan. Verified reviews & community-sourced.</p>
 
     ${listingCards}
 
     ${areaLinksHtml}
+
+    ${tipsLinksBlock()}
 
     ${crossLinksHtml}
 </main>
@@ -616,8 +619,8 @@ function generateAreaPage(cityName, areaName, areaListings, siblingAreas, allCit
   const citySlug = slugify(cityName);
   const areaSlug = slugify(areaName);
   const count = areaListings.length;
-  const title = `Service AC ${areaName}, ${cityName} — nofreon.id`;
-  const description = `Tukang service AC trusted di area ${areaName}, ${cityName}. Ga minta isi freon. Hubungi langsung via WhatsApp.`;
+  const title = `Service AC ${areaName}, ${cityName} — Tukang AC Jujur | nofreon.id`;
+  const description = `Tukang AC jujur & trusted di area ${areaName}, ${cityName}. Ga pernah minta isi freon tanpa alasan. Hubungi langsung via WhatsApp.`;
   const canonical = `${SITE_URL}/${citySlug}/${areaSlug}/`;
 
   // Structured data
@@ -749,6 +752,350 @@ function generateAreaPage(cityName, areaName, areaListings, siblingAreas, allCit
 </html>`;
 }
 
+// =====================================================
+// TIPS (SEO ARTICLES)
+// =====================================================
+
+const ARTICLE_CSS = `
+    .article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 8px 24px 40px;
+    }
+
+    .article h2 {
+        font-size: 19px;
+        font-weight: 700;
+        margin: 28px 0 10px;
+        line-height: 1.4;
+    }
+
+    .article p {
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 14px;
+        color: var(--text);
+    }
+
+    .article ul, .article ol {
+        margin: 0 0 14px 22px;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .article li {
+        margin-bottom: 6px;
+    }
+
+    .article a {
+        color: var(--accent);
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .article a:hover {
+        text-decoration: underline;
+    }
+
+    .article em {
+        color: var(--text-secondary);
+    }
+
+    .faq-block {
+        margin-top: 32px;
+    }
+
+    .faq-block h2 {
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--text-secondary);
+        margin-bottom: 12px;
+    }
+
+    .faq-item {
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 8px;
+        overflow: hidden;
+    }
+
+    .faq-item summary {
+        padding: 14px 20px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq-item p {
+        padding: 0 20px 16px;
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .tip-card {
+        display: block;
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        padding: 18px 20px;
+        margin-bottom: 8px;
+        text-decoration: none;
+        color: var(--text);
+        transition: all 0.15s;
+    }
+
+    .tip-card:hover {
+        box-shadow: var(--shadow);
+    }
+
+    .tip-card h2 {
+        font-size: 15px;
+        font-weight: 700;
+        margin: 0 0 4px;
+    }
+
+    .tip-card p {
+        font-size: 13px;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+    }
+`;
+
+function tipsLinksBlock() {
+  return `
+        <div class="cross-links">
+            <h3>Panduan Anti Kena Tipu</h3>
+            <div class="cross-links-list">
+                ${TIPS.map(t => `<a class="area-link" href="/tips/${t.slug}/">${t.h1}</a>`).join('\n                ')}
+            </div>
+        </div>`;
+}
+
+function pageHead({ title, description, canonical, schemas, extraCss = '' }) {
+  return `<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title}</title>
+    <meta name="description" content="${description}">
+    <meta property="og:title" content="${title}">
+    <meta property="og:description" content="${description}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="${canonical}">
+    <meta property="og:image" content="${SITE_URL}/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${title}">
+    <meta name="twitter:description" content="${description}">
+    <meta name="twitter:image" content="${SITE_URL}/og.png">
+    <meta name="twitter:creator" content="@hanifproduktif">
+    <link rel="canonical" href="${canonical}">
+    ${schemas.map(s => `<script type="application/ld+json">\n    ${JSON.stringify(s, null, 4)}\n    </script>`).join('\n    ')}
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>${SHARED_CSS}${extraCss}</style>`;
+}
+
+function generateTipsPage(tip, allTips) {
+  const canonical = `${SITE_URL}/tips/${tip.slug}/`;
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": tip.title,
+    "description": tip.metaDescription,
+    "url": canonical,
+    "inLanguage": "id",
+    "datePublished": BUILD_DATE,
+    "dateModified": BUILD_DATE,
+    "author": { "@type": "Organization", "name": "nofreon.id", "url": SITE_URL + "/" },
+    "publisher": { "@type": "Organization", "name": "nofreon.id", "url": SITE_URL + "/" }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "nofreon.id", "item": SITE_URL + "/" },
+      { "@type": "ListItem", "position": 2, "name": "Panduan", "item": SITE_URL + "/tips/" },
+      { "@type": "ListItem", "position": 3, "name": tip.h1, "item": canonical }
+    ]
+  };
+
+  const schemas = [articleSchema, breadcrumbSchema];
+  if (tip.faq && tip.faq.length) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": tip.faq.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    });
+  }
+
+  const faqHtml = tip.faq && tip.faq.length ? `
+    <div class="faq-block">
+        <h2>Pertanyaan Terkait</h2>
+        ${tip.faq.map(f => `<details class="faq-item">
+            <summary>${f.q}</summary>
+            <p>${f.a}</p>
+        </details>`).join('\n        ')}
+    </div>` : '';
+
+  const otherTips = allTips.filter(t => t.slug !== tip.slug);
+  const relatedHtml = `
+    <div class="cross-links">
+        <h3>Panduan Lainnya</h3>
+        <div class="cross-links-list">
+            ${otherTips.map(t => `<a class="area-link" href="/tips/${t.slug}/">${t.h1}</a>`).join('\n            ')}
+        </div>
+    </div>`;
+
+  return `<!DOCTYPE html>
+<html lang="id">
+<head>
+    ${pageHead({ title: `${tip.title} | nofreon.id`, description: tip.metaDescription, canonical, schemas, extraCss: ARTICLE_CSS })}
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="logo"><a href="/"><span class="no">no</span>freon.id</a></div>
+        <div class="tagline">panduan anti kena tipu</div>
+    </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">nofreon.id</a>
+    <span class="sep">›</span>
+    <a href="/tips/">Panduan</a>
+    <span class="sep">›</span>
+    <strong>${tip.h1}</strong>
+</nav>
+
+<main class="article">
+    <h1 class="page-title">${tip.h1}</h1>
+    ${tip.body}
+    ${faqHtml}
+    ${relatedHtml}
+</main>
+
+<div class="footer">
+    <p>
+        Cari tukang AC jujur di kotamu?<br>
+        <a href="/">Lihat daftar tukang AC trusted →</a>
+    </p>
+    <div class="stats">nofreon.id · panduan · updated 2026</div>
+</div>
+
+</body>
+</html>`;
+}
+
+function generateTipsIndex(allTips) {
+  const canonical = `${SITE_URL}/tips/`;
+  const title = 'Panduan Anti Kena Tipu Tukang AC | nofreon.id';
+  const description = 'Kumpulan panduan biar ga kena tipu tukang AC: fakta soal freon, ciri tukang AC jujur, dan biaya service yang wajar.';
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "nofreon.id", "item": SITE_URL + "/" },
+      { "@type": "ListItem", "position": 2, "name": "Panduan", "item": canonical }
+    ]
+  };
+
+  return `<!DOCTYPE html>
+<html lang="id">
+<head>
+    ${pageHead({ title, description, canonical, schemas: [breadcrumbSchema], extraCss: ARTICLE_CSS })}
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="logo"><a href="/"><span class="no">no</span>freon.id</a></div>
+        <div class="tagline">panduan anti kena tipu</div>
+    </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">nofreon.id</a>
+    <span class="sep">›</span>
+    <strong>Panduan</strong>
+</nav>
+
+<main class="article">
+    <h1 class="page-title">Panduan Anti Kena Tipu Tukang AC</h1>
+    <p class="page-subtitle">Fakta soal freon, ciri tukang AC jujur, dan harga yang wajar — biar kamu ga jadi korban berikutnya.</p>
+
+    ${allTips.map(t => `<a class="tip-card" href="/tips/${t.slug}/">
+        <h2>${t.h1}</h2>
+        <p>${t.excerpt}</p>
+    </a>`).join('\n    ')}
+</main>
+
+<div class="footer">
+    <p>
+        Cari tukang AC jujur di kotamu?<br>
+        <a href="/">Lihat daftar tukang AC trusted →</a>
+    </p>
+    <div class="stats">nofreon.id · ${allTips.length} panduan · updated 2026</div>
+</div>
+
+</body>
+</html>`;
+}
+
+// =====================================================
+// HOMEPAGE STATIC LISTINGS (crawlable content)
+// =====================================================
+
+function injectStaticListings() {
+  const indexPath = path.join(__dirname, 'index.html');
+  let html = fs.readFileSync(indexPath, 'utf-8');
+
+  const grouped = groupByCity(listings);
+  let staticHtml = '';
+  cityOrder.forEach(cityName => {
+    const cityListings = grouped[cityName] || [];
+    if (cityListings.length === 0) return;
+    const citySlug = slugify(cityName);
+    staticHtml += `<div class="city-section">`;
+    staticHtml += `<h2 class="city-heading"><a href="/${citySlug}/" style="color: inherit; text-decoration: none;">${cityName}</a></h2>`;
+    cityListings.forEach((item, i) => {
+      staticHtml += renderListingCard(item, i);
+    });
+    staticHtml += `</div>`;
+  });
+
+  const startMarker = '<!--LISTINGS-->';
+  const endMarker = '<!--/LISTINGS-->';
+  const startIdx = html.indexOf(startMarker);
+  const endIdx = html.indexOf(endMarker);
+  if (startIdx === -1 || endIdx === -1) {
+    console.warn('  ! LISTINGS markers not found in index.html — skipping static injection');
+    return false;
+  }
+
+  html = html.slice(0, startIdx + startMarker.length) + staticHtml + html.slice(endIdx);
+  fs.writeFileSync(indexPath, html);
+  return true;
+}
+
 function generateSitemap(pages) {
   const urls = pages.map(page => `  <url>
     <loc>${page.url}</loc>
@@ -823,6 +1170,25 @@ function build() {
       console.log(`    ✓ /${citySlug}/${areaSlug}/ (${areaListings.length} listings)`);
     });
   });
+
+  // Generate tips pages
+  const tipsDir = path.join(__dirname, 'tips');
+  ensureDir(tipsDir);
+  fs.writeFileSync(path.join(tipsDir, 'index.html'), generateTipsIndex(TIPS));
+  sitemapPages.push({ url: `${SITE_URL}/tips/`, priority: '0.7' });
+  console.log(`\n  ✓ /tips/ (index)`);
+  TIPS.forEach(tip => {
+    const tipDir = path.join(tipsDir, tip.slug);
+    ensureDir(tipDir);
+    fs.writeFileSync(path.join(tipDir, 'index.html'), generateTipsPage(tip, TIPS));
+    sitemapPages.push({ url: `${SITE_URL}/tips/${tip.slug}/`, priority: '0.7' });
+    console.log(`    ✓ /tips/${tip.slug}/`);
+  });
+
+  // Inject static (crawlable) listings into homepage
+  if (injectStaticListings()) {
+    console.log('  ✓ index.html (static listings injected)');
+  }
 
   // Generate sitemap.xml
   const sitemapXml = generateSitemap(sitemapPages);
