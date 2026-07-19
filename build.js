@@ -573,6 +573,7 @@ function generateCityPage(cityName, cityListings, areaMap, allCityLinks) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title}</title>
     <meta name="description" content="${description}">
+    <meta property="og:site_name" content="nofreon.id">
     <meta property="og:title" content="${title}">
     <meta property="og:description" content="${description}">
     <meta property="og:type" content="website">
@@ -590,7 +591,11 @@ function generateCityPage(cityName, cityListings, areaMap, allCityLinks) {
     <script type="application/ld+json">
     ${JSON.stringify(breadcrumbData, null, 4)}
     </script>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#E63B2E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -712,6 +717,7 @@ function generateAreaPage(cityName, areaName, areaListings, siblingAreas, allCit
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title}</title>
     <meta name="description" content="${description}">
+    <meta property="og:site_name" content="nofreon.id">
     <meta property="og:title" content="${title}">
     <meta property="og:description" content="${description}">
     <meta property="og:type" content="website">
@@ -729,7 +735,11 @@ function generateAreaPage(cityName, areaName, areaListings, siblingAreas, allCit
     <script type="application/ld+json">
     ${JSON.stringify(breadcrumbData, null, 4)}
     </script>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#E63B2E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -1116,6 +1126,7 @@ function pageHead({ title, description, canonical, schemas, extraCss = '' }) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title}</title>
     <meta name="description" content="${description}">
+    <meta property="og:site_name" content="nofreon.id">
     <meta property="og:title" content="${title}">
     <meta property="og:description" content="${description}">
     <meta property="og:type" content="article">
@@ -1128,7 +1139,11 @@ function pageHead({ title, description, canonical, schemas, extraCss = '' }) {
     <meta name="twitter:creator" content="@hanifproduktif">
     <link rel="canonical" href="${canonical}">
     ${schemas.map(s => `<script type="application/ld+json">\n    ${JSON.stringify(s, null, 4)}\n    </script>`).join('\n    ')}
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#E63B2E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -1314,6 +1329,7 @@ function generateRedirectStub(to) {
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="noindex, follow">
     <meta http-equiv="refresh" content="0; url=${target}">
     <link rel="canonical" href="${target}">
     <title>Redirecting…</title>
@@ -1332,7 +1348,11 @@ function generate404Page() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Tidak Ditemukan — nofreon.id</title>
     <meta name="robots" content="noindex">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❄️</text></svg>">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#E63B2E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -1492,15 +1512,27 @@ const body = JSON.stringify({
   urlList: urls
 });
 
+let gotResponse = false;
 const req = https.request({
   hostname: 'api.indexnow.org',
   path: '/IndexNow',
   method: 'POST',
   headers: { 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': Buffer.byteLength(body) }
 }, res => {
-  console.log(\`IndexNow: HTTP \${res.statusCode} — \${urls.length} URLs submitted\`);
+  gotResponse = true;
+  const code = res.statusCode;
+  const ok = code === 200 || code === 202;
+  // Drain the body so the socket closes cleanly — the API server
+  // resets the connection abruptly after responding.
+  res.resume();
+  res.on('error', () => {});
+  res.on('end', () => console.log(\`IndexNow: HTTP \${code} — \${urls.length} URLs submitted\${ok ? ' ✓' : ' (unexpected status)'}\`));
 });
-req.on('error', e => console.error('IndexNow failed:', e.message));
+req.on('error', e => {
+  // Socket noise after a successful response is harmless — only report
+  // errors that happened before the server answered.
+  if (!gotResponse) console.error('IndexNow failed:', e.message);
+});
 req.write(body);
 req.end();
 `;

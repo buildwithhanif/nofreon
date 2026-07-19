@@ -1,0 +1,14 @@
+{
+  "name": "nofreon.id — Tukang AC Jujur",
+  "short_name": "nofreon.id",
+  "description": "Direktori tukang service AC jujur di Indonesia yang ga pernah minta isi freon.",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#E63B2E",
+  "background_color": "#F7F5F0",
+  "display": "standalone",
+  "lang": "id",
+  "start_url": "/"
+}

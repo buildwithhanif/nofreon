@@ -17,14 +17,26 @@ const body = JSON.stringify({
   urlList: urls
 });
 
+let gotResponse = false;
 const req = https.request({
   hostname: 'api.indexnow.org',
   path: '/IndexNow',
   method: 'POST',
   headers: { 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': Buffer.byteLength(body) }
 }, res => {
-  console.log(`IndexNow: HTTP ${res.statusCode} — ${urls.length} URLs submitted`);
+  gotResponse = true;
+  const code = res.statusCode;
+  const ok = code === 200 || code === 202;
+  // Drain the body so the socket closes cleanly — the API server
+  // resets the connection abruptly after responding.
+  res.resume();
+  res.on('error', () => {});
+  res.on('end', () => console.log(`IndexNow: HTTP ${code} — ${urls.length} URLs submitted${ok ? ' ✓' : ' (unexpected status)'}`));
 });
-req.on('error', e => console.error('IndexNow failed:', e.message));
+req.on('error', e => {
+  // Socket noise after a successful response is harmless — only report
+  // errors that happened before the server answered.
+  if (!gotResponse) console.error('IndexNow failed:', e.message);
+});
 req.write(body);
 req.end();
