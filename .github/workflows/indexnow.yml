@@ -1,0 +1,45 @@
+name: IndexNow ping
+
+# Auto-submits every sitemap URL to IndexNow (Bing/Copilot/ChatGPT search
+# index) so you never have to run `node indexnow.js` by hand again.
+#
+# Triggers:
+#  - push to main      : fires right after you merge (works if the host
+#                        auto-deploys from main). A short sleep lets the
+#                        deploy settle before we ping. Even if it pings a
+#                        bit early, IndexNow only *notifies* Bing — Bing
+#                        crawls later on its own schedule, by which point
+#                        the deploy is live.
+#  - workflow_dispatch : a manual "Run workflow" button (use this if you
+#                        deploy manually, after your deploy finishes).
+#  - schedule          : a weekly backstop so URLs get re-submitted even
+#                        if a trigger is ever missed.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * 1'   # Mondays 03:17 UTC — off-peak backstop
+
+# The IndexNow key is a public hosted file (nofreon.id/<key>.txt), not a
+# secret, so no repo secrets are needed.
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Wait for deploy to settle (push trigger only)
+        if: github.event_name == 'push'
+        run: sleep 120
+
+      - name: Ping IndexNow with all sitemap URLs
+        run: node indexnow.js
