@@ -5,6 +5,61 @@
 
 const TIPS = [
   {
+    slug: "kenapa-ac-tidak-dingin",
+    title: "Kenapa AC Tidak Dingin? 7 Penyebab Sebenarnya",
+    metaDescription: "AC tidak dingin? Ada 7 penyebab umum dan cuma 1 yang soal freon. Cek filter & kondensor dulu sebelum bayar isi freon. Panduan jujur biar ga ketipu.",
+    h1: "Kenapa AC Tidak Dingin? 7 Penyebab yang Sebenarnya",
+    excerpt: "AC ga dingin bukan berarti freon habis. Ada 7 penyebab umum, dan cuma 1 yang beneran soal freon. Ini urutan cek yang bener biar ga kena tipu.",
+    body: `
+<p><strong>AC tidak dingin paling sering disebabkan oleh filter atau kondensor yang kotor — bukan freon habis.</strong> Dari 7 penyebab paling umum, cuma 1 yang benar-benar soal freon, dan itupun berarti bocor (bukan "habis"). Sebelum kamu bayar isi freon, cek dulu urutan ini.</p>
+
+<h2>1. Filter Udara Kotor (Penyebab Paling Umum)</h2>
+<p>Ini juara satu. Filter yang penuh debu menyumbat aliran udara, jadi udara dingin ga bisa keluar maksimal. Gejalanya: AC hidup, angin keluar, tapi lemah dan kurang dingin. Solusinya gratis — buka filter, cuci pakai air, keringkan, pasang lagi. Coba ini <em>dulu</em> sebelum apapun.</p>
+
+<h2>2. Evaporator & Kondensor Kotor</h2>
+<p>Kalau filter udah bersih tapi masih kurang dingin, biasanya evaporator (unit dalam) atau kondensor (unit luar) yang kotor. Debu numpuk bikin perpindahan panas terhambat. Ini butuh cuci AC profesional — dan ini solusi untuk mayoritas kasus "AC kurang dingin". <a href="/tips/biaya-service-ac-wajar/">Biaya cuci AC yang wajar ada di sini</a>.</p>
+
+<h2>3. Mode Remote Salah</h2>
+<p>Kedengeran sepele tapi sering kejadian: remote ke-set ke mode <em>Fan</em> atau <em>Dry</em>, bukan <em>Cool</em>. Mode Fan cuma muter kipas tanpa mendinginkan. Pastikan ada ikon salju/<em>Cool</em> dan suhu di-set 24°C atau lebih rendah. Ini pengecekan 10 detik yang gratis.</p>
+
+<h2>4. Kapasitas PK Tidak Sesuai Ruangan</h2>
+<p>Kalau AC-nya memang kekecilan untuk ruangannya, dia ga akan pernah dingin maksimal — kompresor kerja terus tapi kalah sama luas ruangan. Ditambah freon sebanyak apapun ga akan menolong. <a href="/tips/cara-memilih-pk-ac/">Cek tabel PK vs ukuran ruangan</a> untuk memastikan.</p>
+
+<h2>5. Unit Outdoor Kepanasan / Terhalang</h2>
+<p>Unit luar (outdoor) butuh sirkulasi udara untuk membuang panas. Kalau ketutup tembok, tanaman, atau kena matahari langsung terus-menerus, pembuangan panas terhambat dan pendinginan turun. Pastikan area sekitar outdoor lega.</p>
+
+<h2>6. Kapasitor / Kompresor Lemah</h2>
+<p>Kalau outdoor ga nyala atau kompresor mati-hidup ga normal, bisa jadi kapasitor lemah. Ini kerusakan komponen yang bisa <strong>diukur</strong> (ampere, tekanan) — bukan ditebak. Minta teknisi tunjukkan hasil ukurnya sebelum setuju ganti part.</p>
+
+<h2>7. Freon Bocor (Cuma Ini yang Soal Freon)</h2>
+<p>Baru di poin ke-7 kita sampai ke freon. Dan perhatikan kata kuncinya: <strong>bocor</strong>, bukan "habis". Freon ada di <a href="/tips/apakah-freon-ac-bisa-habis/">sistem tertutup dan tidak bisa habis sendiri</a> — kalau berkurang, pasti ada kebocoran. Ciri freon beneran bocor: AC hembus angin tapi ga dingin sama sekali (bukan cuma "kurang"), ada bunga es di pipa, tekanan di manifold gauge rendah. Solusinya: <strong>tambal bocornya dulu, baru isi</strong>. Isi ulang tanpa tambal = bocor lagi dalam hitungan minggu, bayar berulang.</p>
+
+<h2>Urutan Cek yang Bener (Ringkasan)</h2>
+<ol>
+<li>Cek mode remote (gratis, 10 detik)</li>
+<li>Cuci filter sendiri (gratis)</li>
+<li>Cuci AC profesional — evaporator & kondensor (solusi mayoritas kasus)</li>
+<li>Cek PK vs ukuran ruangan</li>
+<li>Baru curigai freon — dan itupun minta bukti tekanan + cari titik bocor</li>
+</ol>
+<p><strong>Poin pentingnya:</strong> kalau ada tukang yang langsung vonis "freon habis" untuk keluhan AC kurang dingin tanpa ngecek 6 hal di atas dulu, itu tanda bahaya. <a href="/tips/kenapa-tukang-ac-selalu-minta-isi-freon/">Kenali modusnya di sini</a>, atau langsung panggil <a href="/">tukang AC jujur yang udah dikurasi komunitas</a>.</p>
+`,
+    faq: [
+      {
+        q: "Apakah AC tidak dingin selalu karena freon habis?",
+        a: "Tidak. Justru penyebab paling umum adalah filter atau evaporator yang kotor, cukup dicuci. Freon hanya salah satu dari banyak penyebab, dan freon berkurang berarti bocor — bukan habis sendiri. Cek filter, kondensor, mode remote, dan kapasitas PK dulu sebelum menduga freon."
+      },
+      {
+        q: "AC baru diservis tapi tetap tidak dingin, kenapa?",
+        a: "Bisa berarti servis sebelumnya tidak menyelesaikan akar masalah — misalnya diisi freon padahal masalahnya evaporator kotor atau PK kekecilan, atau freon diisi tanpa menambal kebocoran sehingga bocor lagi. Minta pengecekan ulang dengan bukti (tekanan di manifold gauge, kondisi filter/evaporator)."
+      },
+      {
+        q: "Berapa lama AC dingin setelah dinyalakan?",
+        a: "AC yang sehat dan sesuai ukuran ruangan biasanya mulai terasa dingin dalam 5–15 menit. Kalau lebih dari itu masih hangat, kemungkinan besar filter/evaporator kotor atau kapasitas PK tidak sesuai ruangan."
+      }
+    ]
+  },
+  {
     slug: "apakah-freon-ac-bisa-habis",
     title: "Apakah Freon AC Bisa Habis? Ini Fakta yang Jarang Dijelaskan Tukang AC",
     metaDescription: "Freon AC tidak bisa habis sendiri karena bersirkulasi di sistem tertutup. Kalau berkurang, artinya bocor. Penjelasan lengkap biar kamu ga kena tipu.",
