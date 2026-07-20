@@ -60,6 +60,61 @@ const TIPS = [
     ]
   },
   {
+    slug: "cara-membersihkan-ac-sendiri",
+    title: "Cara Membersihkan AC Sendiri Tanpa Bongkar",
+    metaDescription: "Panduan cara membersihkan AC sendiri di rumah tanpa bongkar: filter, unit indoor & outdoor. Hemat biaya, plus kapan kamu memang harus panggil tukang.",
+    h1: "Cara Membersihkan AC Sendiri di Rumah",
+    excerpt: "Sebagian perawatan AC bisa kamu lakukan sendiri, gratis, tanpa alat khusus. Ini yang aman dikerjakan sendiri — dan mana yang memang harus ke tukang.",
+    body: `
+<p><strong>Membersihkan filter AC bisa kamu lakukan sendiri dalam 10 menit tanpa alat khusus — dan ini menyelesaikan sebagian besar keluhan "AC kurang dingin".</strong> Tapi ada batasnya: cuci besar (evaporator dalam) butuh alat dan sebaiknya ke tukang. Ini panduan jujurnya, plus garis batas mana yang aman kamu kerjakan sendiri.</p>
+
+<h2>Yang Aman Dikerjakan Sendiri (Gratis)</h2>
+
+<h3>1. Bersihkan Filter (Rutin, 10 Menit)</h3>
+<ol>
+<li>Matikan AC dan cabut dari listrik.</li>
+<li>Buka penutup unit indoor (biasanya tinggal ditarik/diangkat ke atas).</li>
+<li>Lepas filter — lembaran kisi-kisi seperti jaring plastik.</li>
+<li>Cuci di bawah air mengalir. Kalau berminyak, pakai sabun cuci piring lembut.</li>
+<li>Keringkan sepenuhnya (jangan dijemur terik langsung — bisa melengkung), lalu pasang lagi.</li>
+</ol>
+<p>Lakukan tiap <strong>2 minggu sekali</strong> kalau sering dipakai. Filter bersih bikin AC lebih dingin, lebih irit listrik, dan mengurangi bau.</p>
+
+<h3>2. Lap Bagian Luar & Kisi-Kisi</h3>
+<p>Lap bodi unit indoor dan kisi-kisi arah angin pakai kain lembab. Debu di kisi-kisi ganggu aliran udara.</p>
+
+<h3>3. Bersihkan Area Unit Outdoor</h3>
+<p>Pastikan unit luar ga ketutup daun, sampah, atau barang. Sirkulasi udara yang lega bikin pembuangan panas lancar. Bagian luarnya boleh dilap/disemprot air ringan dari luar — tapi <strong>jangan bongkar</strong>.</p>
+
+<h2>Yang Sebaiknya Diserahkan ke Tukang</h2>
+<ul>
+<li><strong>Cuci evaporator dalam (cuci besar):</strong> butuh mesin steam/jet bertekanan dan plastik pelindung agar air ga kena PCB. Salah semprot bisa merusak modul elektronik.</li>
+<li><strong>Cuci unit outdoor menyeluruh:</strong> perlu buka casing dan hati-hati dengan komponen listrik.</li>
+<li><strong>Apapun yang butuh buka kompresor, pipa, atau kelistrikan.</strong></li>
+</ul>
+<p>Kabar baiknya: kalau kamu rutin bersihin filter sendiri, kebutuhan cuci besar jadi lebih jarang — cukup <strong>3–4 bulan sekali</strong>. <a href="/tips/biaya-service-ac-wajar/">Biaya cuci AC yang wajar ada di sini</a>.</p>
+
+<h2>Kenapa Ini Penting (Selain Hemat)</h2>
+<p>AC yang rutin dibersihkan jarang bermasalah — dan itu artinya lebih sedikit alasan buat tukang nakal "menemukan" masalah yang ga ada. Ingat, keluhan "AC kurang dingin" paling sering <a href="/tips/kenapa-ac-tidak-dingin/">gara-gara kotor, bukan freon</a>. Kalau kamu udah cuci filter sendiri dan tetap ga dingin, baru panggil tukang untuk cuci besar — dan pastikan <a href="/tips/kenapa-tukang-ac-selalu-minta-isi-freon/">dia ga langsung vonis "freon habis"</a> tanpa bukti.</p>
+
+<p>Butuh tukang untuk cuci besar? <a href="/">Daftar tukang AC jujur per kota ada di sini</a> — yang ga akan ngarang masalah.</p>
+`,
+    faq: [
+      {
+        q: "Apakah aman membersihkan AC sendiri?",
+        a: "Membersihkan filter, mengelap bodi dan kisi-kisi, serta merapikan area unit outdoor aman dilakukan sendiri asalkan AC dimatikan dan dicabut dari listrik dulu. Yang tidak disarankan sendiri: cuci evaporator dalam (butuh alat steam dan pelindung PCB) dan apapun yang membuka kompresor, pipa, atau kelistrikan."
+      },
+      {
+        q: "Seberapa sering filter AC harus dibersihkan sendiri?",
+        a: "Idealnya setiap 2 minggu untuk pemakaian sering. Filter bersih membuat AC lebih dingin, lebih hemat listrik, dan mengurangi bau. Cuci besar oleh teknisi tetap perlu, tapi cukup 3–4 bulan sekali kalau filter rutin dibersihkan."
+      },
+      {
+        q: "Bisakah membersihkan AC sendiri tanpa mesin steam?",
+        a: "Untuk filter dan bagian luar, ya — cukup air mengalir dan kain lembab. Tapi mencuci evaporator dalam secara menyeluruh memang butuh mesin bertekanan; itu bagian yang sebaiknya diserahkan ke teknisi."
+      }
+    ]
+  },
+  {
     slug: "harga-isi-freon-ac",
     title: "Harga Isi Freon AC 2026 — Cek Sebelum Bayar",
     metaDescription: "Harga isi freon AC R32/R410/R22 terbaru 2026 lengkap. Tapi baca dulu: sering kali kamu ga perlu isi freon sama sekali. Cek biar ga buang uang.",
