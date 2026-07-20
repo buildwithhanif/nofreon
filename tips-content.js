@@ -60,6 +60,65 @@ const TIPS = [
     ]
   },
   {
+    slug: "harga-isi-freon-ac",
+    title: "Harga Isi Freon AC 2026 — Cek Sebelum Bayar",
+    metaDescription: "Harga isi freon AC R32/R410/R22 terbaru 2026 lengkap. Tapi baca dulu: sering kali kamu ga perlu isi freon sama sekali. Cek biar ga buang uang.",
+    h1: "Harga Isi Freon AC 2026 (dan Kapan Kamu Sebenarnya Ga Perlu)",
+    excerpt: "Kisaran harga isi freon R32, R410, R22 terbaru — tapi sebelum bayar, pastikan kamu memang butuh. Sering kali jawabannya: enggak.",
+    body: `
+<p><strong>Kisaran harga isi ulang freon AC di 2026 sekitar Rp185.000–450.000 tergantung jenis freon dan ukuran AC.</strong> Tapi sebelum kamu bayar, ada satu hal yang jauh lebih penting dari daftar harga ini: <strong>pastikan kamu memang butuh isi freon.</strong> Sering kali, enggak.</p>
+
+<h2>Daftar Harga Isi Freon AC 2026 (Kisaran)</h2>
+<ul>
+<li><strong>Tambah freon (top-up) R32, ½–1 PK:</strong> mulai ~Rp185.000</li>
+<li><strong>Isi ulang penuh R32, ½–1 PK:</strong> ~Rp300.000</li>
+<li><strong>Isi ulang penuh R32, 1–2 PK:</strong> ~Rp360.000</li>
+<li><strong>R410A:</strong> umumnya sedikit lebih mahal dari R32</li>
+<li><strong>R22 (AC lama):</strong> bervariasi, makin langka karena mulai ditinggalkan</li>
+</ul>
+<p><em>Angka di atas kisaran umum, bukan harga pasti — beda kota, beda ukuran AC, beda jumlah freon yang dibutuhkan. Selalu minta harga di depan sebelum pengerjaan.</em></p>
+
+<h2>Tapi Tunggu — Kamu Yakin Butuh Isi Freon?</h2>
+<p>Ini bagian yang bikin daftar harga di atas sering ga relevan. <strong>Freon AC tidak bisa habis sendiri.</strong> Dia ada di <a href="/tips/apakah-freon-ac-bisa-habis/">sistem tertutup</a> — kalau berkurang, artinya <em>bocor</em>, bukan "habis karena dipakai". Jadi:</p>
+<ul>
+<li>Kalau AC-mu <strong>ga pernah bocor</strong>, kamu <strong>ga akan pernah butuh</strong> isi freon — seumur pemakaian.</li>
+<li>Kalau keluhannya cuma "kurang dingin", penyebab paling umum bukan freon — tapi <a href="/tips/kenapa-ac-tidak-dingin/">filter atau evaporator kotor</a>. Solusinya cuci AC (lebih murah), bukan isi freon.</li>
+</ul>
+
+<h2>Kapan Isi Freon Beneran Diperlukan</h2>
+<p>Isi freon baru masuk akal kalau ada bukti kebocoran nyata:</p>
+<ul>
+<li>AC hembus angin tapi <strong>ga dingin sama sekali</strong> (bukan cuma "kurang")</li>
+<li>Ada <strong>bunga es</strong> di pipa atau evaporator</li>
+<li>Tekanan freon di <strong>manifold gauge</strong> terbukti rendah (minta ditunjukkan angkanya)</li>
+</ul>
+<p>Dan ini kuncinya: kalau memang bocor, <strong>tambal dulu bocornya, baru isi.</strong> Isi ulang tanpa menambal = freon bocor lagi dalam hitungan minggu, dan kamu bayar harga di atas <em>berulang kali</em> untuk masalah yang sama. Itu jebakan biaya paling umum di service AC.</p>
+
+<h2>Cara Bayar Freon Tanpa Ketipu</h2>
+<ol>
+<li><strong>Minta bukti dulu.</strong> "Boleh lihat tekanannya di manifold gauge?" Kalau ga bisa nunjukin, diagnosanya ngarang.</li>
+<li><strong>Tanya titik bocornya.</strong> "Kalau freon kurang, bocornya di mana?" — misahin tukang jujur dari yang cuma mau jualan freon.</li>
+<li><strong>Sepakati harga di depan</strong>, termasuk apakah sudah termasuk perbaikan kebocoran atau baru isi doang.</li>
+</ol>
+
+<p>Mau lewatin semua drama ini? Panggil <a href="/">tukang AC jujur yang udah dikurasi komunitas</a> — mereka ga akan nawarin isi freon kecuali beneran perlu. Atau kalau lagi mau ganti AC sekalian, cek <a href="/rekomendasi-ac-terbaik/">rekomendasi AC terbaik 2026</a>.</p>
+`,
+    faq: [
+      {
+        q: "Berapa harga isi freon AC R32 2026?",
+        a: "Kisaran umum: tambah freon (top-up) ½–1 PK mulai sekitar Rp185.000, isi ulang penuh ½–1 PK sekitar Rp300.000, dan 1–2 PK sekitar Rp360.000. Harga bervariasi tergantung kota dan jumlah freon yang dibutuhkan."
+      },
+      {
+        q: "Apakah isi freon AC perlu dilakukan rutin?",
+        a: "Tidak. Freon tidak habis karena dipakai — ia bersirkulasi di sistem tertutup. Kalau AC tidak bocor, kamu tidak perlu isi freon sama sekali, bahkan bertahun-tahun. 'Isi freon rutin' bukan perawatan yang benar; perawatan rutin yang benar adalah cuci AC."
+      },
+      {
+        q: "Kenapa AC saya baru diisi freon tapi sudah kurang dingin lagi?",
+        a: "Kemungkinan besar ada kebocoran yang tidak ditambal. Isi ulang freon tanpa memperbaiki titik bocor hanya bertahan beberapa minggu sampai freon bocor lagi. Minta teknisi mencari dan menambal kebocoran, bukan sekadar mengisi ulang."
+      }
+    ]
+  },
+  {
     slug: "apakah-freon-ac-bisa-habis",
     title: "Apakah Freon AC Bisa Habis? Ini Fakta yang Jarang Dijelaskan Tukang AC",
     metaDescription: "Freon AC tidak bisa habis sendiri karena bersirkulasi di sistem tertutup. Kalau berkurang, artinya bocor. Penjelasan lengkap biar kamu ga kena tipu.",
